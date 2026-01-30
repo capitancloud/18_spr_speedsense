@@ -51,8 +51,11 @@ export const DebounceDemo = () => {
 
   return (
     <div className="space-y-6">
+      {/* Header */}
       <div className="flex items-center justify-between">
-        <h3 className="text-xl font-semibold">Debounce Demo</h3>
+        <h3 className="text-xl font-semibold flex items-center gap-2">
+          <span>🎯</span> Debounce
+        </h3>
         <button 
           onClick={handleReset}
           className="text-sm text-muted-foreground hover:text-primary transition-colors"
@@ -61,9 +64,28 @@ export const DebounceDemo = () => {
         </button>
       </div>
 
-      <p className="text-muted-foreground text-sm">
-        Digita in entrambi i campi e osserva quante "chiamate API" vengono fatte.
-      </p>
+      {/* Beginner explanation */}
+      <div className="p-4 rounded-lg bg-accent/10 border border-accent/20 space-y-3">
+        <h4 className="font-medium text-accent flex items-center gap-2">
+          <span>📚</span> Cos'è il Debounce? (Spiegazione semplice)
+        </h4>
+        <p className="text-sm text-muted-foreground">
+          Immagina di cercare "pizza" su Google. Se il browser cercasse ad ogni lettera digitata, 
+          farebbe <strong>5 ricerche</strong>: "p", "pi", "piz", "pizz", "pizza". 
+          Spreco di risorse!
+        </p>
+        <p className="text-sm text-muted-foreground">
+          Il <strong className="text-accent">debounce</strong> aspetta che tu smetta di digitare 
+          per un attimo, poi fa <strong>una sola ricerca</strong> con la parola completa.
+        </p>
+      </div>
+
+      {/* Try it yourself */}
+      <div className="p-3 rounded-lg bg-primary/10 border border-primary/20">
+        <p className="text-sm text-primary font-medium">
+          👆 Prova tu: digita "ciao" in entrambi i campi e osserva quante "chiamate" vengono fatte!
+        </p>
+      </div>
 
       <div className="grid md:grid-cols-2 gap-6">
         {/* Senza Debounce */}
@@ -76,18 +98,21 @@ export const DebounceDemo = () => {
           <Input
             value={instantValue}
             onChange={(e) => setInstantValue(e.target.value)}
-            placeholder="Digita qui..."
+            placeholder='Scrivi "ciao" qui...'
             className="bg-muted border-warning/30 focus:border-warning"
           />
 
           <div className="flex items-center justify-between text-sm">
-            <span className="text-muted-foreground">Chiamate API:</span>
+            <span className="text-muted-foreground">Chiamate al server:</span>
             <span className="text-2xl font-bold text-warning">{instantCalls}</span>
           </div>
 
-          <div className="p-3 rounded-lg bg-warning/10 border border-warning/20 text-xs text-warning/80">
-            ⚠️ Ogni carattere = 1 chiamata al server.
-            Spreco di risorse e rischio di rate limiting!
+          <div className="p-3 rounded-lg bg-warning/10 border border-warning/20 text-xs space-y-1">
+            <p className="text-warning font-medium">⚠️ Problema:</p>
+            <p className="text-warning/80">
+              Ogni lettera = 1 richiesta al server. 
+              Se hai 1000 utenti che digitano, il server esplode! 💥
+            </p>
           </div>
         </div>
 
@@ -101,30 +126,44 @@ export const DebounceDemo = () => {
           <Input
             value={debouncedInput}
             onChange={(e) => setDebouncedInput(e.target.value)}
-            placeholder="Digita qui..."
+            placeholder='Scrivi "ciao" qui...'
             className="bg-muted border-primary/30 focus:border-primary"
           />
 
           <div className="flex items-center justify-between text-sm">
-            <span className="text-muted-foreground">Chiamate API:</span>
+            <span className="text-muted-foreground">Chiamate al server:</span>
             <span className="text-2xl font-bold text-primary text-glow-primary">{debouncedCalls}</span>
           </div>
 
-          <div className="p-3 rounded-lg bg-primary/10 border border-primary/20 text-xs text-primary/80">
-            ✅ Aspetta 500ms dopo l'ultima digitazione.
-            Stesso risultato, meno chiamate!
+          <div className="p-3 rounded-lg bg-primary/10 border border-primary/20 text-xs space-y-1">
+            <p className="text-primary font-medium">✅ Soluzione:</p>
+            <p className="text-primary/80">
+              Aspetta 500ms dopo l'ultima lettera, poi fa UNA sola richiesta.
+              Stesso risultato, 80% meno lavoro!
+            </p>
           </div>
         </div>
       </div>
 
-      {/* Spiegazione tecnica */}
-      <div className="p-4 rounded-lg bg-secondary/50 border border-border text-sm space-y-2">
-        <h5 className="font-medium text-primary">💡 Come funziona?</h5>
-        <p className="text-muted-foreground">
-          Il debounce utilizza un timer che si resetta ad ogni input. 
-          Solo quando l'utente smette di digitare per 500ms, la chiamata viene eseguita.
-          Questo è essenziale per searchbar, autocomplete e form validation.
-        </p>
+      {/* Real world examples */}
+      <div className="p-4 rounded-lg bg-secondary/50 border border-border space-y-3">
+        <h5 className="font-medium flex items-center gap-2">
+          <span>🌍</span> Dove lo trovi nel mondo reale?
+        </h5>
+        <div className="grid sm:grid-cols-3 gap-3 text-sm">
+          <div className="p-2 rounded bg-muted/50">
+            <p className="font-medium">🔍 Barra di ricerca</p>
+            <p className="text-xs text-muted-foreground">Google, Amazon, YouTube</p>
+          </div>
+          <div className="p-2 rounded bg-muted/50">
+            <p className="font-medium">📝 Form di validazione</p>
+            <p className="text-xs text-muted-foreground">Controllo email, username</p>
+          </div>
+          <div className="p-2 rounded bg-muted/50">
+            <p className="font-medium">🗺️ Mappe</p>
+            <p className="text-xs text-muted-foreground">Zoom e pan su Google Maps</p>
+          </div>
+        </div>
       </div>
     </div>
   );
