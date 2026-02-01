@@ -3,10 +3,16 @@
  */
 
 import { LoadingIndicator } from "@/components/ui/LoadingIndicator";
+import { LogoutButton } from "@/components/LogoutButton";
 
 export const Hero = () => {
   return (
     <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+      {/* Logout button */}
+      <div className="absolute top-4 right-4 z-20">
+        <LogoutButton variant="outline" />
+      </div>
+      
       {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl" />
