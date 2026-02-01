@@ -118,12 +118,6 @@ const Login = () => {
             </Button>
           </form>
 
-          <div className="mt-6 p-4 bg-muted/30 rounded-lg border border-muted">
-            <p className="text-xs text-muted-foreground text-center">
-              🔐 <strong>Sicurezza:</strong> Il codice viene verificato tramite hash SHA-256. 
-              Nessun dato sensibile viene memorizzato in chiaro.
-            </p>
-          </div>
         </CardContent>
       </Card>
     </div>
