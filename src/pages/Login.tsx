@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { verifyAccessCode, setAuthenticated } from "@/lib/auth";
 import { Lock, Eye, EyeOff, KeyRound, AlertCircle } from "lucide-react";
+import superProgrammatoreLogo from "@/assets/super-programmatore-logo.png";
 
 const Login = () => {
   const [code, setCode] = useState("");
@@ -52,13 +53,13 @@ const Login = () => {
 
       <Card className="w-full max-w-md relative z-10 border-primary/20 bg-card/80 backdrop-blur-sm">
         <CardHeader className="text-center space-y-4">
-          <div className="mx-auto w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center border border-primary/30">
-            <Lock className="w-8 h-8 text-primary" />
+          <div className="mx-auto">
+            <img 
+              src={superProgrammatoreLogo} 
+              alt="Super Programmatore Logo" 
+              className="w-48 h-auto mx-auto"
+            />
           </div>
-          <CardTitle className="text-2xl font-bold">
-            <span className="text-primary">Speed</span>
-            <span className="text-foreground">Sense</span>
-          </CardTitle>
           <CardDescription className="text-muted-foreground">
             Inserisci il codice di accesso per continuare
           </CardDescription>
